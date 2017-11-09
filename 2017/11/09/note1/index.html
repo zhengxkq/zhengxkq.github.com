@@ -24,7 +24,7 @@
     <!--Title-->
 
 
-<title>浏览器资源加载和运行脑图（基于高性能JS) | 前端</title>
+<title>纯css实现自适应布局表格 | 前端</title>
 
 
     <link rel="alternate" href="/atom.xml" title="前端" type="application/atom+xml">
@@ -122,9 +122,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="浏览器资源加载和运行脑图（基于高性能JS)">
+        <h1 id="纯css实现自适应布局表格">
             
-            浏览器资源加载和运行脑图（基于高性能JS)
+            纯css实现自适应布局表格
             
         </h1>
         <div class="post-meta">
@@ -157,7 +157,11 @@
     </div>
     
     <div class="post-body">
-        <p><img src="https://pic3.zhimg.com/v2-6ad3371b807dbebabcc9d5af5c9f8be2_r.jpg" alt="脑图"></p>
+        <p>这种布局的特点是使用CSS媒体查询语句(@media screen and (…) )，能根据页面宽度，让页面布局自动做相应的调整，而不是采用传统的做法，几种不同的尺寸就做几个相适应的页面。</p>
+<h6 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">       font-family: arial;</div><div class="line">   &#125;</div><div class="line">   table &#123;</div><div class="line">       border: 1px solid #ccc;</div><div class="line">       width: 80%;</div><div class="line">       margin:0;</div><div class="line">       padding:0;</div><div class="line">       border-collapse: collapse;</div><div class="line">       border-spacing: 0;</div><div class="line">       margin: 0 auto;</div><div class="line">   &#125;</div><div class="line">   table tr &#123;</div><div class="line">       border: 1px solid #ddd;</div><div class="line">       padding: 5px;</div><div class="line">   &#125;</div><div class="line">   table th, table td &#123;</div><div class="line">       padding: 10px;</div><div class="line">       text-align: center;</div><div class="line">   &#125;</div><div class="line">   table th &#123;</div><div class="line">       text-transform: uppercase;</div><div class="line">       font-size: 14px;</div><div class="line">       letter-spacing: 1px;</div><div class="line">   &#125;</div><div class="line">   @media screen and (max-width: 600px) &#123;</div><div class="line">       table &#123;</div><div class="line">           border: 0;</div><div class="line">       &#125;</div><div class="line">       table thead &#123;</div><div class="line">           display: none;</div><div class="line">       &#125;</div><div class="line">       table tr &#123;</div><div class="line">           margin-bottom: 10px;</div><div class="line">           display: block;</div><div class="line">           border-bottom: 2px solid #ddd;</div><div class="line">       &#125;</div><div class="line">       table td &#123;</div><div class="line">           display: block;</div><div class="line">           text-align: right;</div><div class="line">           font-size: 13px;</div><div class="line">           border-bottom: 1px dotted #ccc;</div><div class="line">       &#125;</div><div class="line">       table td:last-child &#123;</div><div class="line">           border-bottom: 0;</div><div class="line">       &#125;</div><div class="line">       table td:before &#123;</div><div class="line">           content: attr(data-label);</div><div class="line">           float: left;</div><div class="line">           text-transform: uppercase;</div><div class="line">           font-weight: bold;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h6 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;table&gt;</div><div class="line">    &lt;thead&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;th&gt;支付&lt;/th&gt;</div><div class="line">        &lt;th&gt;日期&lt;/th&gt;</div><div class="line">        &lt;th&gt;金额&lt;/th&gt;</div><div class="line">        &lt;th&gt;周期&lt;/th&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;/thead&gt;</div><div class="line">    &lt;tbody&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td data-label=&quot;支付&quot;&gt;支付 #1&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;日期&quot;&gt;02/01/2015&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;金额&quot;&gt;$2,311&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;周期&quot;&gt;01/01/2015 - 01/31/2015&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td data-label=&quot;支付&quot;&gt;支付 #2&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;日期&quot;&gt;03/01/2015&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;金额&quot;&gt;$3,211&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;周期&quot;&gt;02/01/2015 - 02/28/2015&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;/tbody&gt;</div></pre></td></tr></table></figure>
+<h6 id="pc端效果"><a href="#pc端效果" class="headerlink" title="pc端效果"></a>pc端效果</h6><p><img src="https://raw.githubusercontent.com/zhangtingqian/img/master/2.png" alt="pc端效果"></p>
+<h6 id="小于600px的屏效果（移动端）"><a href="#小于600px的屏效果（移动端）" class="headerlink" title="小于600px的屏效果（移动端）"></a>小于600px的屏效果（移动端）</h6><p><img src="https://raw.githubusercontent.com/zhangtingqian/img/master/2-2.png" alt="小于600px的屏效果"></p>
 
     </div>
 
@@ -179,8 +183,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2017/11/09/note2/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
+        <a href="/2017/11/09/css/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
     
+    
+        <a href="/2017/11/09/note2/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
     
 </div>
 
