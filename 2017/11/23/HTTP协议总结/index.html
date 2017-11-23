@@ -24,7 +24,7 @@
     <!--Title-->
 
 
-<title>纯css实现自适应布局表格 | 前端</title>
+<title>HTTP协议总结 | 前端</title>
 
 
     <link rel="alternate" href="/atom.xml" title="前端" type="application/atom+xml">
@@ -94,7 +94,7 @@
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="menu">
                         
-                            <li role="presentation"><a href="/"><i class="fa fa-fw "></i>首页</a>
+                            <li role="presentation"><a href="/"><i class="fa fa-fw "></i>Home</a>
                             </li>
                         
                             <li role="presentation"><a href="/categories/前端/"><i class="fa fa-fw "></i>前端</a>
@@ -122,9 +122,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="纯css实现自适应布局表格">
+        <h1 id="HTTP协议总结">
             
-            纯css实现自适应布局表格
+            HTTP协议总结
             
         </h1>
         <div class="post-meta">
@@ -148,7 +148,7 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2017/11/09</span>
+        <span class="date-meta">2017/11/23</span>
     </span>
 </div>
 
@@ -157,11 +157,161 @@
     </div>
     
     <div class="post-body">
-        <p>这种布局的特点是使用CSS媒体查询语句(@media screen and (…) )，能根据页面宽度，让页面布局自动做相应的调整，而不是采用传统的做法，几种不同的尺寸就做几个相适应的页面。</p>
-<h6 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">body &#123;</div><div class="line">       font-family: arial;</div><div class="line">   &#125;</div><div class="line">   table &#123;</div><div class="line">       border: 1px solid #ccc;</div><div class="line">       width: 80%;</div><div class="line">       margin:0;</div><div class="line">       padding:0;</div><div class="line">       border-collapse: collapse;</div><div class="line">       border-spacing: 0;</div><div class="line">       margin: 0 auto;</div><div class="line">   &#125;</div><div class="line">   table tr &#123;</div><div class="line">       border: 1px solid #ddd;</div><div class="line">       padding: 5px;</div><div class="line">   &#125;</div><div class="line">   table th, table td &#123;</div><div class="line">       padding: 10px;</div><div class="line">       text-align: center;</div><div class="line">   &#125;</div><div class="line">   table th &#123;</div><div class="line">       text-transform: uppercase;</div><div class="line">       font-size: 14px;</div><div class="line">       letter-spacing: 1px;</div><div class="line">   &#125;</div><div class="line">   @media screen and (max-width: 600px) &#123;</div><div class="line">       table &#123;</div><div class="line">           border: 0;</div><div class="line">       &#125;</div><div class="line">       table thead &#123;</div><div class="line">           display: none;</div><div class="line">       &#125;</div><div class="line">       table tr &#123;</div><div class="line">           margin-bottom: 10px;</div><div class="line">           display: block;</div><div class="line">           border-bottom: 2px solid #ddd;</div><div class="line">       &#125;</div><div class="line">       table td &#123;</div><div class="line">           display: block;</div><div class="line">           text-align: right;</div><div class="line">           font-size: 13px;</div><div class="line">           border-bottom: 1px dotted #ccc;</div><div class="line">       &#125;</div><div class="line">       table td:last-child &#123;</div><div class="line">           border-bottom: 0;</div><div class="line">       &#125;</div><div class="line">       table td:before &#123;</div><div class="line">           content: attr(data-label);</div><div class="line">           float: left;</div><div class="line">           text-transform: uppercase;</div><div class="line">           font-weight: bold;</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<h6 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;table&gt;</div><div class="line">    &lt;thead&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;th&gt;支付&lt;/th&gt;</div><div class="line">        &lt;th&gt;日期&lt;/th&gt;</div><div class="line">        &lt;th&gt;金额&lt;/th&gt;</div><div class="line">        &lt;th&gt;周期&lt;/th&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;/thead&gt;</div><div class="line">    &lt;tbody&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td data-label=&quot;支付&quot;&gt;支付 #1&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;日期&quot;&gt;02/01/2015&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;金额&quot;&gt;$2,311&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;周期&quot;&gt;01/01/2015 - 01/31/2015&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td data-label=&quot;支付&quot;&gt;支付 #2&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;日期&quot;&gt;03/01/2015&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;金额&quot;&gt;$3,211&lt;/td&gt;</div><div class="line">        &lt;td data-label=&quot;周期&quot;&gt;02/01/2015 - 02/28/2015&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;/tbody&gt;</div></pre></td></tr></table></figure>
-<h6 id="pc端效果"><a href="#pc端效果" class="headerlink" title="pc端效果"></a>pc端效果</h6><p><img src="https://raw.githubusercontent.com/zhangtingqian/img/master/2.png" alt="pc端效果"></p>
-<h6 id="小于600px的屏效果（移动端）"><a href="#小于600px的屏效果（移动端）" class="headerlink" title="小于600px的屏效果（移动端）"></a>小于600px的屏效果（移动端）</h6><p><img src="https://raw.githubusercontent.com/zhangtingqian/img/master/2-2.png" alt="小于600px的屏效果"></p>
+        <p><a href="http://naotu.baidu.com/file/e0bff2c766dea59043b2ba718d5e3bc1?token=6d2695175ad294d1" target="_blank" rel="external">脑图总结连接</a></p>
+<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><h2 id="HTTP2"><a href="#HTTP2" class="headerlink" title="HTTP2"></a>HTTP2</h2><ol>
+<li><p>多路复用</p>
+<ul>
+<li><p>允许同时通过单一的HTTP2链接发起多重请求</p>
+</li>
+<li><p>HTTP1.1中浏览器客户端在同一时间，针对同一域名下的请求有一定数量限制。超过限制数目的请求会被阻塞</p>
+</li>
+<li><p>HTTP2可以很容易的实现多流并行而不用依赖建立TCP链接。通信都在一个连上完成，这个连接可以承载任意数量的双向数据流。HTTP2通过让所有数据流共用个连接，可以更有效的使用TCP连接，让高带宽也能真正服务于HTTP的性能提升</p>
+</li>
+<li><p>单连接多资源的方式，减少服务端的链接压力，内存占用更少，连接吞吐量更大</p>
+</li>
+<li><p>由于TCP连接的减少而使用网络拥塞状况得以改善，同时慢启动时间的减少，使拥塞和丢包恢复速度更快</p>
+</li>
+<li><p>可设置优先级</p>
+</li>
+<li><p>重置连接表现更好</p>
+</li>
+<li><p>可以取消某个stream的请求，不影响连接</p>
+</li>
+</ul>
+</li>
+<li><p>二进制分帧</p>
+<ul>
+<li><p>不改动HTTP1.x的语义方法状态码等的情况下，通过在应用层和传输层之间增加一个二进制分帧层</p>
+</li>
+<li><p>在二进制分帧层中，HTTP2会将所有传输的信息分割为更小的消息和帧，并对它们采用二进制格式的编码</p>
+</li>
+<li><p>HTTP1.x的首部信息会被封装到HEADER frame，而相应的Request Body则封装到DATA frame里面</p>
+</li>
+</ul>
+</li>
+<li><p>首部压缩</p>
+<ul>
+<li><p>HTTP1.x不支持首部压缩，为此SPDY和HTTP2应运而生，SPDY使用的是通用的DEFLATE算法，而HTTP2则使用了专门为首部压缩而设计的HPACK算法</p>
+</li>
+<li><p>header中由于cookie和user Agent很容易膨胀，而且每次都要重复发送</p>
+</li>
+<li><p>HTTP2.0使用encoder来减少需要传输的header大小，通讯双方各自cache一份header fields表，既避免了重复header的传输，又减小了需要传输的大小</p>
+</li>
+<li><p>高效的压缩算法可以很大的压缩header，减少发送包的数量从而降低延迟</p>
+</li>
+</ul>
+</li>
+<li><p>服务端推送</p>
+<ul>
+<li><p>是一种在客户端请求之前发送数据的机制</p>
+</li>
+<li><p>在HTTP2中，服务器可以对客户端的一个请求发送多个响应</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="HTTP1-0"><a href="#HTTP1-0" class="headerlink" title="HTTP1.0"></a>HTTP1.0</h2><ol>
+<li><p>连接无法复用,导致的问题</p>
+<ul>
+<li><p>导致每次请求都经历三次握手和慢启动</p>
+</li>
+<li><p>三次握手在高延迟的场景下影响比较明显慢启动则对文件类大请求影响较大</p>
+</li>
+</ul>
+</li>
+<li><p>解决方法</p>
+<ul>
+<li><p>在header里设置Connection:Keep-Alive</p>
+</li>
+<li><p>时间可由服务器设置</p>
+</li>
+<li><p>HTTP1.1之后默认是keep-alive</p>
+</li>
+</ul>
+</li>
+<li><p>head of line block(管线屏蔽)</p>
+<ul>
+<li><p>导致带宽无法被充分利用，以及后续健康请求被阻塞</p>
+</li>
+<li><p>在第一个请求没有收到回复之前，后续从应用层发出的请求只能排队</p>
+</li>
+</ul>
+</li>
+<li><p>HTTP1慢启动</p>
+<ul>
+<li>过去HTTP性能优化的关键并不在于高带宽，而是低延迟。TCP连接会随着时间进行自我调谐，起初会限制连接的最大速度，如果数据成功传输，会随着时间的推移提高传输的速度</li>
+</ul>
+</li>
+</ol>
+<h2 id="SPDY"><a href="#SPDY" class="headerlink" title="SPDY"></a>SPDY</h2><ol>
+<li><p>多路复用</p>
+</li>
+<li><p>请求优先级</p>
+</li>
+<li><p>header压缩</p>
+</li>
+<li><p>server推送</p>
+</li>
+<li><p>server暗示</p>
+</li>
+</ol>
+<h2 id="HTTP1-1"><a href="#HTTP1-1" class="headerlink" title="HTTP1.1"></a>HTTP1.1</h2><ol>
+<li><p>可扩展，可以增加自定义头域</p>
+</li>
+<li><p>增加了文件断点续传增加了range头域允许只请求资源<br>的某个部分</p>
+</li>
+<li><p>缓存</p>
+<ul>
+<li><p>强制缓存</p>
+<p>  <strong>缓存有效时不与服务器交互</strong></p>
+<ol>
+<li><p>Expires1.0支持，返回到期时间，下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据</p>
+</li>
+<li><p>Cache-Control 1.1支持</p>
+<ul>
+<li><p>private：客户端可以缓存</p>
+</li>
+<li><p>publick：客户端和代理服务器都可以缓存</p>
+</li>
+<li><p>max-age=xxx：缓存的内容将在xxx秒后失效</p>
+</li>
+<li><p>no-cache：需要使用对比缓存来验证缓存数据</p>
+</li>
+<li><p>no-store:所有内容都不会缓存，强制缓存，对比缓存都不会触发</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>对比缓存</p>
+<p>  <strong>不管缓存是否有效都要先与服务器交互</strong></p>
+<p>  <strong>生效时的状态码为304</strong></p>
+<ol>
+<li><p>Last-Modified:第一次请求时，服务器返回的资源最后<br>修改时间，在response header中</p>
+</li>
+<li><p>If-Modified-Since:再次请求服务器时，通过此字段通知服务器上次请求时，服务器返回的资源最后修改时间服务器收到后与请求资源的最后修改时间做对比，如果改动过返回内容，返回状态码200，若无变化则返回状态码304</p>
+</li>
+<li><p>Etag(优先级高于Last-Modified)</p>
+<ul>
+<li>服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识生成规则由服务器决定</li>
+</ul>
+</li>
+<li><p>If-None-Match(优先级高于If-Modified-Since)</p>
+<ul>
+<li>再次请求时，浏览器通知服务器上次返回的资源唯一标识</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>请求流水线处理，不用等待上一次请求结果返回，就可以发出下一次请求，但是服务器端必须按照接收到客户端的请求先后顺序返回响应结果</p>
+</li>
+<li><p>增加host字段</p>
+</li>
+<li><p>节约带宽，增加了一个100状态码，事先发送一个只带<br>头域的请求，如果服务器因为权限拒绝了请求那么就回<br>送响应401，如果服务器接收此请求就回送响应码10<br>0，客户端就可以发送带实体的完整请求了</p>
+</li>
+</ol>
 
     </div>
 
@@ -173,7 +323,7 @@
         </div>
         <div>
             
-                版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+                License: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
 知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
 </a>
             
@@ -183,10 +333,8 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2017/11/09/css/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
     
-    
-        <a href="/2017/11/09/note2/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+        <a href="/2017/11/09/load/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
     
 </div>
 
@@ -260,23 +408,23 @@
         
         
     <div class="widget">
-        <h3 class="title">分类</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link current" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">5</span></li></ul>
+        <h3 class="title">Categories</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link current" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">6</span></li></ul>
     </div>
 
 
         
         
     <div class="widget">
-      <h3 class="title">归档</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">5</span></li></ul>
+      <h3 class="title">Archives</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">1</span></li></ul>
     </div>
 
 
         
         
   <div class="widget">
-    <h3 class="title">标签云</h3>
+    <h3 class="title">Tag Cloud</h3>
     <div class="content tag-cloud">
         <a href="/tags/前端/" style="font-size: 10px;">前端</a>
     </div>
@@ -286,7 +434,7 @@
         
         
     <div class="widget">
-        <h3 class="title">友链</h3>
+        <h3 class="title">Friends</h3>
         <div class="content friends-link">
         
             <a href="https://zhengxkq.github.io/" class="fa" target="_blank">个人博客</a>
