@@ -24,7 +24,7 @@
     <!--Title-->
 
 
-<title>Async/Await知识总结 | 前端</title>
+<title>浏览器资源加载和运行脑图（基于高性能JS) | 前端</title>
 
 
     <link rel="alternate" href="/atom.xml" title="前端" type="application/atom+xml">
@@ -122,9 +122,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Async/Await知识总结">
+        <h1 id="浏览器资源加载和运行脑图（基于高性能JS)">
             
-            Async/Await知识总结
+            浏览器资源加载和运行脑图（基于高性能JS)
             
         </h1>
         <div class="post-meta">
@@ -148,7 +148,7 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2017/11/09</span>
+        <span class="date-meta">2017/12/03</span>
     </span>
 </div>
 
@@ -157,21 +157,7 @@
     </div>
     
     <div class="post-body">
-        <h3 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h3><ol>
-<li>async 表示这是一个async函数，await只能用在这个函数里面。</li>
-<li>await 表示在这里等待promise返回结果了，再继续执行。</li>
-<li>await 后面跟着的应该是一个promise对象（当然，其他返回值也没关系，只是会立即执行，不过那样就没有意义了…）</li>
-</ol>
-<h3 id="栗子"><a href="#栗子" class="headerlink" title="栗子"></a>栗子</h3><p>这里我们要实现一个暂停功能，输入N毫秒，则停顿N毫秒后才继续往下执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var sleep = function (time) &#123;</div><div class="line">    return new Promise(function (resolve, reject) &#123;</div><div class="line">        setTimeout(function () &#123;</div><div class="line">            resolve();</div><div class="line">        &#125;, time);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var start = async function () &#123;</div><div class="line">    // 在这里使用起来就像同步代码那样直观</div><div class="line">    console.log(&apos;start&apos;);</div><div class="line">    await sleep(3000);</div><div class="line">    console.log(&apos;end&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">start();</div></pre></td></tr></table></figure>
-<p>控制台先输出start，稍等3秒后，输出了end。</p>
-<h3 id="获得返回值"><a href="#获得返回值" class="headerlink" title="获得返回值"></a>获得返回值</h3><p>await等待的虽然是promise对象，但不必写.then(..)，直接可以得到返回值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var sleep = function (time) &#123;</div><div class="line">    return new Promise(function (resolve, reject) &#123;</div><div class="line">        setTimeout(function () &#123;</div><div class="line">            // 返回 ‘ok’</div><div class="line">            resolve(&apos;ok&apos;);</div><div class="line">        &#125;, time);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var start = async function () &#123;</div><div class="line">    let result = await sleep(3000);</div><div class="line">    console.log(result); // 收到 ‘ok’</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="捕捉错误"><a href="#捕捉错误" class="headerlink" title="捕捉错误"></a>捕捉错误</h3><p>既然.then(..)不用写了，那么.catch(..)也不用写，可以直接用标准的try catch语法捕捉错误。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var sleep = function (time) &#123;</div><div class="line">    return new Promise(function (resolve, reject) &#123;</div><div class="line">        setTimeout(function () &#123;</div><div class="line">            // 模拟出错了，返回 ‘error’</div><div class="line">            reject(&apos;error&apos;);</div><div class="line">        &#125;, time);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var start = async function () &#123;</div><div class="line">    try &#123;</div><div class="line">        console.log(&apos;start&apos;);</div><div class="line">        await sleep(3000); // 这里得到了一个返回错误</div><div class="line">        </div><div class="line">        // 所以以下代码不会被执行了</div><div class="line">        console.log(&apos;end&apos;);</div><div class="line">    &#125; catch (err) &#123;</div><div class="line">        console.log(err); // 这里捕捉到错误 `error`</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h3 id="循环多个await"><a href="#循环多个await" class="headerlink" title="循环多个await"></a>循环多个await</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">..省略以上代码</div><div class="line"></div><div class="line">var start = async function () &#123;</div><div class="line">    for (var i = 1; i &lt;= 10; i++) &#123;</div><div class="line">        console.log(`当前是第$&#123;i&#125;次等待..`);</div><div class="line">        await sleep(1000);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>值得注意的是，await必须在async函数的上下文中的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">..省略以上代码</div><div class="line"></div><div class="line">let 一到十 = [1,2,3,4,5,6,7,8,9,10];</div><div class="line"></div><div class="line">// 错误示范</div><div class="line">一到十.forEach(function (v) &#123;</div><div class="line">    console.log(`当前是第$&#123;v&#125;次等待..`);</div><div class="line">    await sleep(1000); // 错误!! await只能在async函数中运行</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 正确示范</div><div class="line">for(var v of 一到十) &#123;</div><div class="line">    console.log(`当前是第$&#123;v&#125;次等待..`);</div><div class="line">    await sleep(1000); // 正确, for循环的上下文还在async函数中</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p><img src="https://raw.githubusercontent.com/zhangtingqian/img/master/QQ%E5%9B%BE%E7%89%8720171109221120.jpg" alt="脑图"></p>
 
     </div>
 
@@ -193,10 +179,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2017/11/09/load/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
+        <a href="/2017/12/03/css/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
     
     
-        <a href="/2017/11/09/css/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+        <a href="/2017/12/03/note2/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
     
 </div>
 
@@ -279,7 +265,7 @@
         
     <div class="widget">
       <h3 class="title">Archives</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">2</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/"><i class="fa" aria-hidden="true">December 2017</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/"><i class="fa" aria-hidden="true">November 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">2</span></li></ul>
     </div>
 
 
